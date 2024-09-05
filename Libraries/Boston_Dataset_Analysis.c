@@ -1,8 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "sklearn.h"
+#include "metrics.h"
 #include "statistics.h"
 #include "io_control.h"
+#include "linear_regression.h"
 
 #define MAX_FEATURES 14
 #define THRESHOLD 0.5
@@ -13,7 +14,7 @@ int model() {
     double *labels = NULL;
     int numPoints, numFeatures;
 
-    if (readCSV("boston.csv", &data, &numPoints, &numFeatures) != 0)
+    if (readCSV("../boston.csv", &data, &numPoints, &numFeatures) != 0)
     {
         printf("\033[38;2;255;165;0mError reading CSV file!\033[0m\n");
         return -1;
