@@ -28,7 +28,7 @@ Structure:
     ->boston.csv:
       This csv file contains the dataset from Boston city of the houses with different internal and external features.
 
-------------------------------------------------------------------------< Special Note >---------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
 "The file Boston_Dataset_Analysis.h is a specialized library tailored for the Boston house price dataset. But, the other libraries in the project are designed for more general use, allowing for flexibility in training different Linear Regression models on new datasets. However, their performance and efficiency in handling various models have not yet been thoroughly tested, so I cannot guarantee optimal results across all applications."
 -------------------------------------------------------------------------------------------------------------------------------------------------------------
 
