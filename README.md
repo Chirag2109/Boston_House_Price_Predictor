@@ -11,7 +11,7 @@ Structure:
 ->Boston_House_Price_Predictor:
     ->Libraries:
       This folder contains all the custom header files which developed and used in this project.
-        ->Boston_Dataset_Analysis.h:
+        ->model.h:
           This header file contains the function which is using all other header files to do the required project building.
         ->io_control.h:
           This header file contains the functions which are required to take input from user, read csv file(dataset) and free the space that is being used by the variables used in the processing.
@@ -23,8 +23,8 @@ Structure:
           This header file contains the functions which are required to calculate the accuracy of the model like finding the r2 score of the model.
     ->Temporary_Files:
       This Folder contain the help.md file for more information.
-    ->Model.c:
-      This file is just calling the model generated in Boston_Dataset_Analysis.h file.
+    ->Main.c:
+      This file contains the actual int main function in which i am printing the menu and calling the function depending on user's choice.
     ->boston.csv:
       This csv file contains the dataset from Boston city of the houses with different internal and external features.
 
@@ -39,7 +39,14 @@ Step2: Preprocessing - It contains various tasks to be done before training the 
          ii) Checking for the features having great impact on label(price in this case) : For this, 
              a. I have made a matrix containing the correlation value of every feature with every other feature.
              b. Then I created a correlated features array which contains the indices of the features having correlation value greater than the threshold value with the label(price in this case).
-             c. Then use this data for further processing.
-Step3: Data Processing - Working with features having great impact on label(price in this case) ->
-          i) Then splitdata function is splitting the code into training and testing datasets. I have used the ratio to be 80:20 respectively, but as earliear mentioned this a general function and you can pass any other ratio as an argument to the function.
-         ii) Then training the data using linear regression.
+             c. Then splitdata function is splitting the code into training and testing datasets. I have used the ratio to be 80:20 respectively, but as earliear mentioned this a general function and you can pass any other ratio as an argument to the function.
+Step3: Data Processing - Working with features having great impact on label(price in this case) in the train data ->
+          i) Then training the data splitted by split data function using linear regression.
+         ii) Then predicting the price using the data stored in y_test matrix and storing the prediction in y_pred array.
+Step4: Performance - Check the performance of a regression model, we generally analyse three metrices r2 score, mean absolute error and mean squared error ->
+             a. mean absolute error: it finds the difference in the prediction stored in y_pred against the price in the y_test matrix and then calculate the mean value of those differences.
+             b. mean squared error: it finds the square of the difference in the prediction stored in y_pred against the price in the y_test matrix and then calculate the mean value of those square differences.
+             c. R2 score: 1 – (RSS/TSS) Where, R2 represents the requrired R Squared value, RSS represents the residual sum of squares, and TSS represents the total sum of squares.
+Step5: UserInput - Now take input of the features present in the correlatedFeatures array from the user and predict the output based on this input and showing the output to the user.
+
+END :)
