@@ -1,3 +1,5 @@
+#include <math.h>
+
 // Function to calculate Mean Squared Error
 double meanSquaredError(double *y_true, double *y_pred, int size)
 {
