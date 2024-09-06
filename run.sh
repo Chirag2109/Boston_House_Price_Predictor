@@ -53,7 +53,7 @@ ar rcs model.a model.o
 gcc -o Main ../Main.c -L. model.a mylib.a -lgsl -lgslcblas -lm
 
 # Run the compiled program
-./output
+./Main
 
 # Clean up
 rm -f *.o
