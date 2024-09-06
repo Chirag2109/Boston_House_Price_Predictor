@@ -1,14 +1,13 @@
-#include <stdio.h>
-#include <ctype.h>
-#include <stdlib.h>
-#include <string.h>
+#include "header.h"
 
 #define MAX_LINE_LENGTH 1024
 
 // Function to clear the input buffer
-void clearInputBuffer() {
+void clearInputBuffer()
+{
     int c;
-    while ((c = getchar()) != '\n' && c != EOF) {
+    while ((c = getchar()) != '\n' && c != EOF)
+    {
         // Clear the buffer
     }
 }
@@ -16,9 +15,12 @@ void clearInputBuffer() {
 // Function to free 2D array
 void free2DArray(double **array, int rows)
 {
-    if (array != NULL) {
-        for (int i = 0; i < rows; i++) {
-            if (array[i] != NULL) {
+    if (array != NULL)
+    {
+        for (int i = 0; i < rows; i++)
+        {
+            if (array[i] != NULL)
+            {
                 free(array[i]);
             }
         }
@@ -103,23 +105,7 @@ void getUserInput(double *features, int numFeatures, int *indices, int MAX_FEATU
         "TAX (full-value property tax rate per $10,000)",
         "PTRATIO (pupil-teacher ratio by town)",
         "B (1000(Bk - 0.63)^2 where Bk is the proportion of black residents by town)",
-        "LSTAT (%% lower status of the population)"};
-
-    const double inputRanges[][2] = {
-        {0.0, 100.0},   // CRIM
-        {0.0, 100.0},   // ZN
-        {0.0, 30.0},    // INDUS
-        {0.0, 1.0},     // CHAS
-        {0.0, 1.0},     // NOX
-        {3.0, 10.0},    // RM
-        {0.0, 100.0},   // AGE
-        {1.0, 12.0},    // DIS
-        {1.0, 24.0},    // RAD
-        {100.0, 900.0}, // TAX
-        {12.0, 22.0},   // PTRATIO
-        {0.0, 400.0},   // B
-        {1.0, 40.0}     // LSTAT
-    };
+        "LSTAT (\% lower status of the population)"};
 
     const double examples[] = {
         0.3,   // CRIM
@@ -149,9 +135,13 @@ void getUserInput(double *features, int numFeatures, int *indices, int MAX_FEATU
 
         int validInput = 0;
 
+        // Set specific limits for CHAS as it's a boolean, otherwise use DBL_MIN and DBL_MAX
+        double minLimit = (featureIndex == 3) ? 0.0 : DBL_MIN;  // CHAS (index 3) is boolean
+        double maxLimit = (featureIndex == 3) ? 1.0 : DBL_MAX;
+
         while (!validInput)
         {
-            printf("\033[38;2;100;149;237mEnter value for %s (Range: %.2f - %.2f, Example: %.2f): \033[0m", featureNames[featureIndex], inputRanges[featureIndex][0], inputRanges[featureIndex][1], examples[featureIndex]);
+            printf("\033[38;2;100;149;237mEnter value for %s (Example: %.2f): \033[0m", featureNames[featureIndex], examples[featureIndex]);
             fgets(inputBuffer, sizeof(inputBuffer), stdin);
 
             // Check if input is a valid double
@@ -164,10 +154,10 @@ void getUserInput(double *features, int numFeatures, int *indices, int MAX_FEATU
                 continue;
             }
 
-            // Check if input is within the specified range
-            if (inputValue < inputRanges[featureIndex][0] || inputValue > inputRanges[featureIndex][1])
+            // Check if input is within the defined range
+            if (inputValue < minLimit || inputValue > maxLimit)
             {
-                printf("\033[38;2;255;255;0mInvalid input! Please enter a value within the range %.2f - %.2f for %s.\033[0m\n", inputRanges[featureIndex][0], inputRanges[featureIndex][1], featureNames[featureIndex]);
+                printf("\033[38;2;255;255;0mInvalid input! Please enter a value within the range %.2e - %.2e for %s.\033[0m\n", minLimit, maxLimit, featureNames[featureIndex]);
             }
             else
             {
