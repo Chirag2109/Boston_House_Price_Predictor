@@ -1,6 +1,4 @@
-#include <gsl/gsl_blas.h>
-#include <gsl/gsl_matrix.h>
-#include <gsl/gsl_linalg.h>
+#include "Package.h"
 
 void splitData(double **data, double *labels, double ***X_train, double **y_train, double ***X_test, double **y_test, int numPoints, int numFeatures, int *correlatedFeatures, int correlatedSize, int testSize, int trainSize)
 {
