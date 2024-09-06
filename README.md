@@ -30,7 +30,8 @@ Structure:
     -->boston.csv:
         This csv file contains the dataset from Boston city of the houses with different internal and external features.
 
--------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
 "The file Boston_Dataset_Analysis.h is a specialized library tailored for the Boston house price dataset. But, the other libraries in the project are designed for more general use, allowing for flexibility in training different Linear Regression models on new datasets. However, their performance and efficiency in handling various models have not yet been thoroughly tested, so I cannot guarantee optimal results across all applications."
 -------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -51,4 +52,9 @@ Step4: Performance - Check the performance of a regression model, we generally a
              c. R2 score: 1 – (RSS/TSS) Where, R2 represents the requrired R Squared value, RSS represents the residual sum of squares, and TSS represents the total sum of squares.
 Step5: UserInput - Now take input of the features present in the correlatedFeatures array from the user and predict the output based on this input and showing the output to the user.
 
+
+
+Word of Caution:
+Run this code in a linux terminal only using the command ./run.sh as this script file will run all the commands automatically that are needed to run this application and mind it the commands in this script file are "exclusive" to the Linux Terminal.
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
 END :)
