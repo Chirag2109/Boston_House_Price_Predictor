@@ -32,7 +32,7 @@ Structure:
 
 
 
-"The file Boston_Dataset_Analysis.h is a specialized library tailored for the Boston house price dataset. But, the other libraries in the project are designed for more general use, allowing for flexibility in training different Linear Regression models on new datasets. However, their performance and efficiency in handling various models have not yet been thoroughly tested, so I cannot guarantee optimal results across all applications."
+"The file model.h is a specialized library tailored for the Boston house price dataset. But, the other libraries in the project are designed for more general use, allowing for flexibility in training different Linear Regression models on new datasets. However, their performance and efficiency in handling various models have not yet been thoroughly tested, so I cannot guarantee optimal results across all applications."
 -------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Approach:
@@ -41,7 +41,7 @@ Step2: Preprocessing - It contains various tasks to be done before training the 
           i) Checking for the null values in the dataset : Fortunately, the file doesnot contain any null values beforehand so this make our task easier.
          ii) Checking for the features having great impact on label(price in this case) : For this, 
              a. I have made a matrix containing the correlation value of every feature with every other feature.
-             b. Then I created a correlated features array which contains the indices of the features having correlation value greater than the threshold value with the label(price in this case).
+             b. Then I created a correlated features array which contains the indices of the features having correlation value greater than the threshold(0.50 by default) value with the label(price in this case).
              c. Then splitdata function is splitting the code into training and testing datasets. I have used the ratio to be 80:20 respectively, but as earliear mentioned this a general function and you can pass any other ratio as an argument to the function.
 Step3: Data Processing - Working with features having great impact on label(price in this case) in the train data ->
           i) Then training the data splitted by split data function using linear regression.
