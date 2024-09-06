@@ -11,8 +11,8 @@
 #include <gsl/gsl_linalg.h>
 
 //Custom Libraries
+#include "model.h"
 #include "metrics.h"
 #include "statistics.h"
 #include "io_control.h"
 #include "linear_regression.h"
-#include "Boston_Dataset_Analysis.h"
