@@ -1,5 +1,3 @@
-Here's a neatly formatted version of your `Boston_House_Price_Predictor` project documentation:
-
 ---
 
 # Boston_House_Price_Predictor
