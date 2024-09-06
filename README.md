@@ -54,7 +54,7 @@ Step5: UserInput - Now take input of the features present in the correlatedFeatu
 
 
 
-Word of Caution:
-Run this code in a linux terminal only using the command ./run.sh as this script file will run all the commands automatically that are needed to run this application and mind it the commands in this script file are "exclusive" to the Linux Terminal.
+Important Notice:
+Please ensure you run this application exclusively in a Linux terminal environment. Use the command ./run.sh to execute this script, which will automatically perform all the necessary steps to build and run the application. Note that the commands in this script are specifically tailored for Linux systems and will not work on other operating systems. Running the script in a non-Linux environment may result in errors or unexpected behavior.
 -------------------------------------------------------------------------------------------------------------------------------------------------------------
 END :)
