@@ -5,9 +5,9 @@ int main()
     double THRESHOLD;
     double TRAIN_SIZE_RATIO;
 
-    double *y_test = NULL; // To store test labels
-    double *y_pred = NULL; // To store predicted labels
-    int test_size = 0;     // To store the test size
+    double *y_test = NULL;
+    double *y_pred = NULL;
+    int test_size = 0;
 
     printf("\n");
     printf("\t\t\033[1;4;38;2;255;0;255m --- Model Testing Menu --- \033[0m\t\n\n");
@@ -15,8 +15,8 @@ int main()
     printf("\033[38;2;192;192;192mPerformance Report -> Enter  0 to view the performance report of the model.\033[0m\n");
     printf("\033[38;2;192;192;192mTest the Model      \033[0m\n");
     printf("\033[38;2;192;192;192m                   -> Enter  1 to begin testing the model.\033[0m\n");
-    printf("\033[38;2;192;192;192m                   -> Enter  2 to test testing the model with a diffrent threshold value.\033[0m\n");
-    printf("\033[38;2;192;192;192m                   -> Enter  3 to test testing the model with different threshold and train size ratio.\033[0m\n");
+    printf("\033[38;2;192;192;192m                   -> Enter  2 to test the model with a different threshold value.\033[0m\n");
+    printf("\033[38;2;192;192;192m                   -> Enter  3 to test the model with a different threshold and train size ratio.\033[0m\n");
     printf("\033[38;2;0;255;255mPlease select an option by entering the corresponding number!\033[0m\n\n");
 
     int flag = 1;
@@ -28,6 +28,7 @@ int main()
         {
             printf("\033[38;2;255;255;0mInvalid input. Please enter a valid number.\033[0m\n");
             clearInputBuffer();
+            continue;
         }
         clearInputBuffer();
 
@@ -54,6 +55,7 @@ int main()
             {
                 printf("\033[38;2;255;255;0mInvalid input. Please enter a valid number.\033[0m\n");
                 clearInputBuffer();
+                continue;
             }
             clearInputBuffer();
             model(&y_test, &y_pred, &test_size, 1, THRESHOLD);
@@ -65,6 +67,7 @@ int main()
             {
                 printf("\033[38;2;255;255;0mInvalid input. Please enter a valid number.\033[0m\n");
                 clearInputBuffer();
+                continue;
             }
 
             printf("\033[38;2;100;149;237mEnter the new train size ratio : \033[0m");
@@ -72,6 +75,7 @@ int main()
             {
                 printf("\033[38;2;255;255;0mInvalid input. Please enter a valid number.\033[0m\n");
                 clearInputBuffer();
+                continue;
             }
             clearInputBuffer();
 
