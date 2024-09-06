@@ -9,24 +9,26 @@ This tool is particularly useful for real estate professionals, data analysts, a
 
 Structure:
 ->Boston_House_Price_Predictor:
-    ->Libraries:
-      This folder contains all the custom header files which developed and used in this project.
-        ->model.h:
-          This header file contains the function which is using all other header files to do the required project building.
-        ->io_control.h:
-          This header file contains the functions which are required to take input from user, read csv file(dataset) and free the space that is being used by the variables used in the processing.
-        ->statistics.h:
-          This header file contains the functions which are required to do the statistical calculations during the data preprocessing like finding the standard deviation and covariance of the dataset.
-        ->linear_regression.h:
-          This header file contains the functions which are required to do the actual data processing like training the linear regression model based on the dataset available.
-        ->metrics.h:
-          This header file contains the functions which are required to calculate the accuracy of the model like finding the r2 score of the model.
-    ->Temporary_Files:
-      This Folder contain the help.md file for more information.
-    ->Main.c:
-      This file contains the actual int main function in which i am printing the menu and calling the function depending on user's choice.
-    ->boston.csv:
-      This csv file contains the dataset from Boston city of the houses with different internal and external features.
+    -->Libraries:
+        This folder contains all the custom header files which developed and used in this project.
+        --->model.h:
+              This header file contains the function which is using all other header files to do the required project building.
+        --->io_control.h:
+              This header file contains the functions which are required to take input from user, read csv file(dataset) and free the space that is being used by the variables used in the processing.
+        --->statistics.h:
+              This header file contains the functions which are required to do the statistical calculations during the data preprocessing like finding the standard deviation and covariance of the dataset.
+        --->linear_regression.h:
+              This header file contains the functions which are required to do the actual data processing like training the linear regression model based on the dataset available.
+        --->metrics.h:
+              This header file contains the functions which are required to calculate the accuracy of the model like finding the r2 score of the model.
+        --->Package.h:
+              This header file contains the include statements of all other header files. So it is like a package consisting of libraries.
+    -->Temporary_Files:
+        This Folder contain the help.md file for more information.
+    -->Main.c:
+        This file contains the actual int main function in which i am printing the menu and calling the function depending on user's choice.
+    -->boston.csv:
+        This csv file contains the dataset from Boston city of the houses with different internal and external features.
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------
 "The file Boston_Dataset_Analysis.h is a specialized library tailored for the Boston house price dataset. But, the other libraries in the project are designed for more general use, allowing for flexibility in training different Linear Regression models on new datasets. However, their performance and efficiency in handling various models have not yet been thoroughly tested, so I cannot guarantee optimal results across all applications."
