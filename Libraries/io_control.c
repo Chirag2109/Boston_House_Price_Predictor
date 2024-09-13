@@ -2,13 +2,42 @@
 
 #define MAX_LINE_LENGTH 1024
 
-// Function to clear the input buffer
-void clearInputBuffer()
-{
+void clearInputBuffer() {
     int c;
-    while ((c = getchar()) != '\n' && c != EOF)
+    while ((c = getchar()) != '\n' && c != EOF); 
+}
+
+// Function to clear the input buffer
+void validdouble(char *s, double minLimit, double maxLimit, double *VALUE)
+{
+    char inputBuffer[100];
+    int validInput = 0;
+
+    while (!validInput)
     {
-        // Clear the buffer
+        printf("\033[38;2;100;149;237m%s\033[0m", s);
+        fgets(inputBuffer, sizeof(inputBuffer), stdin);
+
+        // Check if input is a valid double
+        char *endPtr;
+        double inputValue = strtod(inputBuffer, &endPtr);
+
+        if (endPtr == inputBuffer || *endPtr != '\n') // Not a valid double or there are extra characters
+        {
+            printf("\033[38;2;255;255;0mInvalid input! Please enter a numerical value.\033[0m\n");
+            continue;
+        }
+
+        // Check if input is within the defined range
+        if (inputValue < minLimit || inputValue > maxLimit)
+        {
+            printf("\033[38;2;255;255;0mInvalid input! Please enter a value within the specified range %.2lf - %.2lf.\033[0m\n", minLimit, maxLimit);
+        }
+        else
+        {
+            *VALUE = inputValue;
+            validInput = 1;
+        }
     }
 }
 
@@ -123,7 +152,6 @@ void getUserInput(double *features, int numFeatures, int *indices, int MAX_FEATU
         4.98   // LSTAT
     };
 
-    char inputBuffer[100];
     for (int i = 0; i < numFeatures; i++)
     {
         int featureIndex = indices[i];
@@ -133,37 +161,12 @@ void getUserInput(double *features, int numFeatures, int *indices, int MAX_FEATU
             continue;
         }
 
-        int validInput = 0;
-
-        // Set specific limits for CHAS as it's a boolean, otherwise use DBL_MIN and DBL_MAX
-        double minLimit = (featureIndex == 3) ? 0.0 : DBL_MIN;  // CHAS (index 3) is boolean
+        double minLimit = (featureIndex == 3) ? 0.0 : DBL_MIN; // CHAS (index 3) is boolean
         double maxLimit = (featureIndex == 3) ? 1.0 : DBL_MAX;
 
-        while (!validInput)
-        {
-            printf("\033[38;2;100;149;237mEnter value for %s (Example: %.2f): \033[0m", featureNames[featureIndex], examples[featureIndex]);
-            fgets(inputBuffer, sizeof(inputBuffer), stdin);
-
-            // Check if input is a valid double
-            char *endPtr;
-            double inputValue = strtod(inputBuffer, &endPtr);
-
-            if (endPtr == inputBuffer || *endPtr != '\n') // Not a valid double or there are extra characters
-            {
-                printf("\033[38;2;255;255;0mInvalid input! Please enter a numerical value.\033[0m\n");
-                continue;
-            }
-
-            // Check if input is within the defined range
-            if (inputValue < minLimit || inputValue > maxLimit)
-            {
-                printf("\033[38;2;255;255;0mInvalid input! Please enter a value within the range %.2e - %.2e for %s.\033[0m\n", minLimit, maxLimit, featureNames[featureIndex]);
-            }
-            else
-            {
-                features[i] = inputValue;
-                validInput = 1;
-            }
-        }
+        char *format = "Enter value for %s (Example: %.2f): ";
+        char s[100];
+        sprintf(s, format, featureNames[featureIndex], examples[featureIndex]);
+        validdouble(s, minLimit, maxLimit, &features[i]);
     }
 }
