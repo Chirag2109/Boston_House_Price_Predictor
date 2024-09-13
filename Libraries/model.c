@@ -1,41 +1,18 @@
 #include "Package.h"
 
 #define MAX_FEATURES 14
-#define TD 0.5
-#define TSR 0.8
 
-int model(double **y_test_ptr, double **y_pred_ptr, int *test_size_ptr, int num_args, ...)
+int model(double **y_test_ptr, double **y_pred_ptr, int *test_size_ptr, double THRESHOLD, double TRAIN_SIZE_RATIO)
 {
     double **data = NULL;
     double *labels = NULL;
     int numPoints, numFeatures;
-
-    // Default values
-    double THRESHOLD = TD;
-    double TRAIN_SIZE_RATIO = TSR;
 
     if (readCSV("../boston.csv", &data, &numPoints, &numFeatures) != 0)
     {
         printf("\033[38;2;255;165;0mError reading CSV file!\033[0m\n");
         return -1;
     }
-
-    va_list args;
-    va_start(args, num_args);
-
-    // If the user provided a custom THRESHOLD
-    if (num_args >= 1)
-    {
-        THRESHOLD = va_arg(args, double);
-    }
-
-    // If the user provided a custom TRAIN_SIZE_RATIO
-    if (num_args >= 2)
-    {
-        TRAIN_SIZE_RATIO = va_arg(args, double);
-    }
-
-    va_end(args);
 
     int train_size = (int)(TRAIN_SIZE_RATIO * numPoints);
     int test_size = numPoints - train_size;
@@ -182,7 +159,7 @@ int model(double **y_test_ptr, double **y_pred_ptr, int *test_size_ptr, int num_
     return 0;
 }
 
-int report(double *y_test, double *y_pred, int test_size)
+void report(double *y_test, double *y_pred, int test_size)
 {
     double mse = meanSquaredError(y_test, y_pred, test_size);
     double mae = meanAbsoluteError(y_test, y_pred, test_size);
