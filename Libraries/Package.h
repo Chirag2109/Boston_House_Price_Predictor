@@ -1,10 +1,12 @@
+#ifndef PACKAGE_H
+#define PACKAGE_H
+
 //Predefined Libraries
 #include <math.h>
 #include <ctype.h>
 #include <float.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdarg.h>
 #include <string.h>
 #include <gsl/gsl_blas.h>
 #include <gsl/gsl_matrix.h>
@@ -16,3 +18,5 @@
 #include "statistics.h"
 #include "io_control.h"
 #include "linear_regression.h"
+
+#endif
