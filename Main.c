@@ -23,7 +23,7 @@ int main()
         double THRESHOLD = 0.5;
         double TRAIN_SIZE_RATIO = 0.75;
         int n;
-        printf("\n\n\033[38;2;100;149;237mEnter your choice: \033[0m");
+        printf("\n\033[38;2;100;149;237mEnter your choice: \033[0m");
         if (scanf("%d", &n) != 1)
         {
             printf("\033[38;2;255;255;0mInvalid input. Please enter a valid number.\033[0m\n");
@@ -50,21 +50,7 @@ int main()
             break;
 
         case 2:
-            do
-            {
-                printf("\033[38;2;100;149;237mEnter the new threshold (0 <= THRESHOLD <= 0.73): \033[0m");
-                if (scanf("%lf", &THRESHOLD) != 1)
-                {
-                    printf("\033[38;2;255;255;0mInvalid input. Please enter a valid number.\033[0m\n");
-                    clearInputBuffer();
-                    continue;
-                }
-                if (THRESHOLD < 0.0 || THRESHOLD > 0.73)
-                {
-                    printf("\033[38;2;255;255;0mOut of range. Please enter a value between 0 and 0.73.\033[0m\n");
-                }
-                clearInputBuffer();
-            } while (THRESHOLD < 0.0 || THRESHOLD > 0.73);
+            validdouble("Enter the new threshold (0 <= THRESHOLD <= 0.73): ", 0, 0.73, &THRESHOLD);
 
             if (THRESHOLD == 0.5)
             {
@@ -78,21 +64,8 @@ int main()
             }
 
         case 3:
-            do
-            {
-                printf("\033[38;2;100;149;237mEnter the new train size ratio (0 < TRAIN_SIZE_RATIO < 1): \033[0m");
-                if (scanf("%lf", &TRAIN_SIZE_RATIO) != 1)
-                {
-                    printf("\033[38;2;255;255;0mInvalid input. Please enter a valid number.\033[0m\n");
-                    clearInputBuffer();
-                    continue;
-                }
-                if (TRAIN_SIZE_RATIO <= 0.0 || TRAIN_SIZE_RATIO >= 1.0)
-                {
-                    printf("\033[38;2;255;255;0mOut of range error. Please enter a value between 0 and 1.\033[0m\n");
-                }
-                clearInputBuffer();
-            } while (TRAIN_SIZE_RATIO <= 0.0 || TRAIN_SIZE_RATIO >= 1.0);
+
+            validdouble("Enter the new train size ratio (0 < TRAIN_SIZE_RATIO < 1): ", 0, 1, &TRAIN_SIZE_RATIO);
 
             if (TRAIN_SIZE_RATIO == 0.75)
             {
@@ -106,21 +79,8 @@ int main()
             }
 
         case 4:
-            do
-            {
-                printf("\033[38;2;100;149;237mEnter the new threshold (0 <= THRESHOLD <= 0.73): \033[0m");
-                if (scanf("%lf", &THRESHOLD) != 1)
-                {
-                    printf("\033[38;2;255;255;0mInvalid input. Please enter a valid number.\033[0m\n");
-                    clearInputBuffer();
-                    continue;
-                }
-                if (THRESHOLD < 0.0 || THRESHOLD > 0.73)
-                {
-                    printf("\033[38;2;255;255;0mOut of range. Please enter a value between 0 and 0.73.\033[0m\n");
-                }
-                clearInputBuffer();
-            } while (THRESHOLD < 0.0 || THRESHOLD > 0.73);
+
+            validdouble("Enter the new threshold (0 <= THRESHOLD <= 0.73): ", 0, 0.73, &THRESHOLD);
 
             if (THRESHOLD == 0.5)
             {
@@ -129,21 +89,8 @@ int main()
             }
             else
             {
-                do
-                {
-                    printf("\033[38;2;100;149;237mEnter the new train size ratio (0 < TRAIN_SIZE_RATIO < 1): \033[0m");
-                    if (scanf("%lf", &TRAIN_SIZE_RATIO) != 1)
-                    {
-                        printf("\033[38;2;255;255;0mInvalid input. Please enter a valid number.\033[0m\n");
-                        clearInputBuffer();
-                        continue;
-                    }
-                    if (TRAIN_SIZE_RATIO <= 0.0 || TRAIN_SIZE_RATIO >= 1.0)
-                    {
-                        printf("\033[38;2;255;255;0mOut of range error. Please enter a value between 0 and 1.\033[0m\n");
-                    }
-                    clearInputBuffer();
-                } while (TRAIN_SIZE_RATIO <= 0.0 || TRAIN_SIZE_RATIO >= 1.0);
+
+                validdouble("Enter the new train size ratio (0 < TRAIN_SIZE_RATIO < 1): ", 0, 1, &TRAIN_SIZE_RATIO);
 
                 if (TRAIN_SIZE_RATIO == 0.75)
                 {
