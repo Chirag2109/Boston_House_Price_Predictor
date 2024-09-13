@@ -26,7 +26,7 @@ void splitData(double **data, double *labels, double ***X_train, double **y_trai
         indices[i] = i;
     }
 
-    srand(50);
+    srand(42);
     // Shuffle the indices
     for (int i = numPoints - 1; i > 0; i--)
     {
